@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace GameContextfolderTool; // <--- CHANGE THIS to match your project name!
+namespace GameContextfolderTool; 
 
 public partial class Form1 : Form
 {
@@ -13,7 +13,7 @@ public partial class Form1 : Form
     {
         string folderPath = txtPath.Text.Trim();
 
-        // 1. Check if the path is empty or doesn't exist
+        // 1. Checking if the path is empty?
         if (string.IsNullOrEmpty(folderPath) || !Directory.Exists(folderPath))
         {
             MessageBox.Show("Please paste a valid folder path first.");
@@ -27,13 +27,13 @@ public partial class Form1 : Form
 
         try
         {
-            // Start the recursive "digging" process
+            // Start the recursive process
             BuildTree(folderPath, sb, 0);
 
             // 3. Show the result in the big text box
             txtOutput.Text = sb.ToString();
 
-            // 4. Automatically copy to clipboard for your AI
+            // 4. Automatically copy to clipboard 
             Clipboard.SetText(sb.ToString());
 
             MessageBox.Show("Structure copied to clipboard!");
@@ -56,7 +56,7 @@ public partial class Form1 : Form
             sb.AppendLine($"{indent}📄 {file.Name}");
         }
 
-        // List all folders and "dig" into them
+        // List all folders and dig into them
         foreach (var subDir in directoryInfo.GetDirectories())
         {
             sb.AppendLine($"{indent}📁 {subDir.Name.ToUpper()}");
